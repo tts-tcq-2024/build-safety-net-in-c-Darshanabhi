@@ -14,7 +14,7 @@ static const char soundexTable[256] = {
     ['L'] = '4',
     ['M'] = '5', ['N'] = '5',
     ['R'] = '6'
-}
+};
 
 char getSoundexCode(char c) {
     return soundexTable[c];
