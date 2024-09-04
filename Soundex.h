@@ -6,20 +6,16 @@
 #include <string.h>
 
 char getSoundexCode(char c) {
-    c = toupper(c);
-if(c == 'B' || c == 'F' || c == 'P' || c == 'V')
-    return '1';
-if(c == 'C' || c == 'G' || c == 'J' || c == 'K' || c == 'Q' || c == 'S' || c == 'X' || c == 'Z')
-    return '2';
-if(c == 'D' || c == 'T')
-    return '3';
-if(c == 'L')
-    return '4';    
-if(c == 'M' || c == 'N')
-    return '5';
-if(c == 'R')
-    return '6';
- return '0'; // For A, E, I, O, U, H, W, Y
+  static const char soundexTable[256] = {
+        ['B'] = '1', ['F'] = '1', ['P'] = '1', ['V'] = '1',
+        ['C'] = '2', ['G'] = '2', ['J'] = '2', ['K'] = '2', ['Q'] = '2', ['S'] = '2', ['X'] = '2', ['Z'] = '2',
+        ['D'] = '3', ['T'] = '3',
+        ['L'] = '4',
+        ['M'] = '5', ['N'] = '5',
+        ['R'] = '6',
+        ['A'] = '0', ['E'] = '0', ['I'] = '0', ['O'] = '0',['U'] = '0', ['H'] = '0', ['W'] = '0', ['Y'] = '0'
+    };
+    return soundexTable[toupper(c)];
 }
 
 void generateSoundex(const char *name, char *soundex) {
