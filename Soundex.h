@@ -5,16 +5,18 @@
 #include <ctype.h>
 #include <string.h>
 
+static const char soundexTable[256] = {
+    ['A'] = '0', ['E'] = '0', ['I'] = '0', ['O'] = '0', ['U'] = '0',
+    ['H'] = '0', ['W'] = '0', ['Y'] = '0',
+    ['B'] = '1', ['F'] = '1', ['P'] = '1', ['V'] = '1',
+    ['C'] = '2', ['G'] = '2', ['J'] = '2', ['K'] = '2', ['Q'] = '2', ['S'] = '2', ['X'] = '2', ['Z'] = '2',
+    ['D'] = '3', ['T'] = '3',
+    ['L'] = '4',
+    ['M'] = '5', ['N'] = '5',
+    ['R'] = '6'
+}
+
 char getSoundexCode(char c) {
-    static char soundexTable[256];
-    soundexTable['A'] = '0'; soundexTable['E'] = '0'; soundexTable['I'] = '0'; soundexTable['O'] = '0'; soundexTable['U'] = '0';
-    soundexTable['H'] = '0'; soundexTable['W'] = '0'; soundexTable['Y'] = '0';
-    soundexTable['B'] = '1'; soundexTable['F'] = '1'; soundexTable['P'] = '1'; soundexTable['V'] = '1';
-    soundexTable['C'] = '2'; soundexTable['G'] = '2'; soundexTable['J'] = '2'; soundexTable['K'] = '2'; soundexTable['Q'] = '2'; soundexTable['S'] = '2'; soundexTable['X'] = '2'; soundexTable['Z'] = '2';
-    soundexTable['D'] = '3'; soundexTable['T'] = '3';
-    soundexTable['L'] = '4';
-    soundexTable['M'] = '5'; soundexTable['N'] = '5';
-    soundexTable['R'] = '6';
     return soundexTable[c];
 }
 
