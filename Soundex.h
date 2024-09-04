@@ -6,9 +6,6 @@
 #include <string.h>
 
 void initializeSoundexTable(char *table) {
-    for (int i = 0; i < 256; i++) {
-        table[i] = '0';
-    }
     table['A'] = '0'; table['E'] = '0'; table['I'] = '0'; table['O'] = '0'; table['U'] = '0';
     table['H'] = '0'; table['W'] = '0'; table['Y'] = '0';
     table['B'] = '1'; table['F'] = '1'; table['P'] = '1'; table['V'] = '1';
