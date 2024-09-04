@@ -17,7 +17,7 @@ char getSoundexCode(char c) {
         ['R'] = '6'
     };
     c = toupper(c); 
-    return soundexTable[(unsigned char)c];
+    return soundexTable[c];
 }
 
 void generateSoundex(const char *name, char *soundex) {
