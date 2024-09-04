@@ -31,14 +31,19 @@ void generateSoundexPattern(int len,int sIndex, const char *name, char *soundex)
     }
 }
 
+void appendNullCharacter(char *soundex) {
+ while (sIndex < 4) {
+        soundex[sIndex++] = '0';
+    }
+    soundex[4] = '\0';
+}
+
 void generateSoundex(const char *name, char *soundex) {
     int len = strlen(name);
     soundex[0] = toupper(name[0]);
     int sIndex = 1;
-    while (sIndex < 4) {
-        soundex[sIndex++] = '0';
-    }
-    soundex[4] = '\0';
+    generateSoundexPattern(len,sIndex,name,soundex);
+    appendNullCharacter(soundex);
 }
 
 #endif // SOUNDEX_H
