@@ -5,20 +5,24 @@
 #include <ctype.h>
 #include <string.h>
 
+void initializeSoundexTable(char *table) {
+    for (int i = 0; i < 256; ++i) {
+        table[i] = '0';
+    }
+    table['A'] = '0'; table['E'] = '0'; table['I'] = '0'; table['O'] = '0'; table['U'] = '0';
+    table['H'] = '0'; table['W'] = '0'; table['Y'] = '0';
+    table['B'] = '1'; table['F'] = '1'; table['P'] = '1'; table['V'] = '1';
+    table['C'] = '2'; table['G'] = '2'; table['J'] = '2'; table['K'] = '2'; table['Q'] = '2'; table['S'] = '2'; table['X'] = '2'; table['Z'] = '2';
+    table['D'] = '3'; table['T'] = '3';
+    table['L'] = '4';
+    table['M'] = '5'; table['N'] = '5';
+    table['R'] = '6';
+}
+
 char getSoundexCode(char c) {
-        static const char soundexCodes[256] = {
-        ['A'] = '0', ['E'] = '0', ['I'] = '0', ['O'] = '0', ['U'] = '0',
-        ['H'] = '0', ['W'] = '0', ['Y'] = '0',
-        ['B'] = '1', ['F'] = '1', ['P'] = '1', ['V'] = '1',
-        ['C'] = '2', ['G'] = '2', ['J'] = '2', ['K'] = '2', ['Q'] = '2', ['S'] = '2', ['X'] = '2', ['Z'] = '2',
-        ['D'] = '3', ['T'] = '3',
-        ['L'] = '4',
-        ['M'] = '5', ['N'] = '5',
-        ['R'] = '6'
-    };
-    if (c < 0 || c >= 256) 
-            return '0';
-    return soundexCodes[(unsigned char)c];
+    static char soundexTable[256];
+    char mappedchar = initializeSoundexTable(soundexTable);
+    return soundexTable[(unsigned char)toupper(mappedchar)];
 }
 
 void generateSoundex(const char *name, char *soundex) {
@@ -32,11 +36,9 @@ void generateSoundex(const char *name, char *soundex) {
             soundex[sIndex++] = code;
         }
     }
-
     while (sIndex < 4) {
         soundex[sIndex++] = '0';
     }
-
     soundex[4] = '\0';
 }
 
