@@ -20,6 +20,12 @@ char getSoundexCode(char c) {
 
 void generateSoundex(const char *name, char *soundex) {
     int len = strlen(name);
+
+    if(len == 0) {
+        soundex[0] = '\0';
+        return;
+    }
+    
     soundex[0] = toupper(name[0]);
     int sIndex = 1;
 
