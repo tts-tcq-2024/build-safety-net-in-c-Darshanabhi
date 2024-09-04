@@ -14,7 +14,7 @@ char getSoundexCode(char c) {
         ['M'] = '5', ['N'] = '5',
         ['R'] = '6',
         ['A'] = '0', ['E'] = '0', ['I'] = '0', ['O'] = '0',['U'] = '0', ['H'] = '0', ['W'] = '0', ['Y'] = '0'
-    };
+    }
     return soundexTable[toupper(c)];
 }
 
