@@ -6,17 +6,19 @@
 #include <string.h>
 
 void initializeSoundexTable(char *table) {
-    for (int i = 0; i < 256; ++i) {
-        table[i] = '0';
+    memset(table, '0', 256); // Set all to '0'
+
+    // Set specific mappings
+    const char* groups[] = {
+        "AEIOUHWY", "BFVP", "CGJKQSXZ", "DT", "L", "MN", "R"
+    };
+    const char codes[] = {'0', '1', '2', '3', '4', '5', '6'};
+    
+    for (int i = 0; i < sizeof(groups) / sizeof(groups[0]); ++i) {
+        for (const char* p = groups[i]; *p; ++p) {
+            table[(unsigned char)*p] = codes[i];
+        }
     }
-    table['A'] = '0'; table['E'] = '0'; table['I'] = '0'; table['O'] = '0'; table['U'] = '0';
-    table['H'] = '0'; table['W'] = '0'; table['Y'] = '0';
-    table['B'] = '1'; table['F'] = '1'; table['P'] = '1'; table['V'] = '1';
-    table['C'] = '2'; table['G'] = '2'; table['J'] = '2'; table['K'] = '2'; table['Q'] = '2'; table['S'] = '2'; table['X'] = '2'; table['Z'] = '2';
-    table['D'] = '3'; table['T'] = '3';
-    table['L'] = '4';
-    table['M'] = '5'; table['N'] = '5';
-    table['R'] = '6';
 }
 
 char getSoundexCode(char c) {
