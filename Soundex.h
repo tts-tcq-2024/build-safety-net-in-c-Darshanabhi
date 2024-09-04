@@ -21,8 +21,8 @@ void initializeSoundexTable(char *table) {
 
 char getSoundexCode(char c) {
     static char soundexTable[256];
-    char mappedchar = initializeSoundexTable(soundexTable);
-    return soundexTable[(unsigned char)toupper(mappedchar)];
+    initializeSoundexTable(soundexTable);
+    return soundexTable[(unsigned char)toupper(c)];
 }
 
 void generateSoundex(const char *name, char *soundex) {
