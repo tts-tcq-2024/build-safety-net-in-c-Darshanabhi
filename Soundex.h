@@ -6,7 +6,6 @@
 #include <string.h>
 
 char getSoundexCode(char c) {
-  static const char soundexTable[256] = {
         ['A'] = '0', ['E'] = '0', ['I'] = '0', ['O'] = '0', ['U'] = '0',
         ['H'] = '0', ['W'] = '0', ['Y'] = '0',
         ['B'] = '1', ['F'] = '1', ['P'] = '1', ['V'] = '1',
@@ -14,10 +13,8 @@ char getSoundexCode(char c) {
         ['D'] = '3', ['T'] = '3',
         ['L'] = '4',
         ['M'] = '5', ['N'] = '5',
-        ['R'] = '6'
-    };
-    c = toupper(c); 
-    return soundexTable[c];
+        ['R'] = '6' 
+    return c;
 }
 
 void generateSoundex(const char *name, char *soundex) {
