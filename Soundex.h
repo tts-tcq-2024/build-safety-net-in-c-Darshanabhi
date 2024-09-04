@@ -22,28 +22,20 @@ char getSoundexCode(char c) {
     return soundexTable[(unsigned char)toupper(c)];
 }
 
-void generateSoundexPattern(int len,int sIndex, const char *name, char *soundex) {
- for (int i = 1; i < len && sIndex < 4; i++) {
+void generateSoundex(const char *name, char *soundex) {
+    int len = strlen(name);
+    soundex[0] = toupper(name[0]);
+    int sIndex = 1;
+   for (int i = 1; i < len && sIndex < 4; i++) {
         char code = getSoundexCode(name[i]);
         if (code != '0' && code != soundex[sIndex - 1]) {
             soundex[sIndex++] = code;
         }
     }
-}
-
-void appendNullCharacter(char *soundex, int sIndex) {
- while (sIndex < 4) {
+     while (sIndex < 4) {
         soundex[sIndex++] = '0';
     }
     soundex[4] = '\0';
-}
-
-void generateSoundex(const char *name, char *soundex) {
-    int len = strlen(name);
-    soundex[0] = toupper(name[0]);
-    int sIndex = 1;
-    generateSoundexPattern(len,sIndex,name,soundex);
-    appendNullCharacter(soundex, sIndex);
 }
 
 #endif // SOUNDEX_H
