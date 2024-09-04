@@ -20,7 +20,6 @@ if(c == 'M' || c == 'N')
 if(c == 'R')
     return '6';
  return '0'; // For A, E, I, O, U, H, W, Y
-    }
 }
 
 void generateSoundex(const char *name, char *soundex) {
