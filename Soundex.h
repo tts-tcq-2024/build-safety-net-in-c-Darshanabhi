@@ -16,6 +16,8 @@ char getSoundexCode(char c) {
         ['M'] = '5', ['N'] = '5',
         ['R'] = '6'
     };
+    if (c < 0 || c >= 256) 
+            return '0';
     return soundexCodes[(unsigned char)c];
 }
 
