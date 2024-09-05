@@ -6,15 +6,31 @@
 #include <string.h>
 
 char getSoundexCode(char c) {
-    char soundexTable[256];
-    soundexTable['A'] = '0'; soundexTable['E'] = '0'; soundexTable['I'] = '0'; soundexTable['O'] = '0'; soundexTable['U'] = '0';
-    soundexTable['H'] = '0'; soundexTable['W'] = '0'; soundexTable['Y'] = '0';
-    soundexTable['B'] = '1'; soundexTable['F'] = '1'; soundexTable['P'] = '1'; soundexTable['V'] = '1';
-    soundexTable['C'] = '2'; soundexTable['G'] = '2'; soundexTable['J'] = '2'; soundexTable['K'] = '2'; soundexTable['Q'] = '2'; soundexTable['S'] = '2'; soundexTable['X'] = '2'; soundexTable['Z'] = '2';
-    soundexTable['D'] = '3'; soundexTable['T'] = '3';
-    soundexTable['L'] = '4';
-    soundexTable['M'] = '5'; soundexTable['N'] = '5';
-    soundexTable['R'] = '6';
+    static char soundexTable[256];
+    static int initialized = 0;
+    if (!initialized) {
+        for (int i = 0; i < 256; ++i) {
+            soundexTable[i] = '0'; 
+        }
+        for (char c : "AEIOUHWY") {
+            soundexTable[(unsigned char)c] = '0';
+        }
+        for (char c : "BFVP") {
+            soundexTable[(unsigned char)c] = '1';
+        }
+        for (char c : "CGJKQSXZ") {
+            soundexTable[(unsigned char)c] = '2';
+        }
+        for (char c : "DT") {
+            soundexTable[(unsigned char)c] = '3';
+        }
+        soundexTable[(unsigned char)'L'] = '4';
+        for (char c : "MN") {
+            soundexTable[(unsigned char)c] = '5';
+        }
+        soundexTable[(unsigned char)'R'] = '6';
+        initialized = 1;
+    }
     return soundexTable[(unsigned char)toupper(c)];
 }
 
