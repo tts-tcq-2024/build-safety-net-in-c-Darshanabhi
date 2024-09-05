@@ -22,7 +22,7 @@ char getSoundexCode(char c) {
     return soundexTable[(unsigned char)toupper(c)];
 }
 
-void appendCodeToSoundex(char *code, char *soundex, int sIndex) {
+void appendCodeToSoundex(char code, char *soundex, int sIndex) {
 if (code != '0' && code != soundex[sIndex - 1]) {
             soundex[sIndex++] = code;
     }
