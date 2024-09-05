@@ -5,22 +5,21 @@
 #include <ctype.h>
 #include <string.h>
 
+void initializeSoundexTable(char *table) {
+    table['A'] = '0'; table['E'] = '0'; table['I'] = '0'; table['O'] = '0'; table['U'] = '0';
+    table['H'] = '0'; table['W'] = '0'; table['Y'] = '0';
+    table['B'] = '1'; table['F'] = '1'; table['P'] = '1'; table['V'] = '1';
+    table['C'] = '2'; table['G'] = '2'; table['J'] = '2'; table['K'] = '2'; table['Q'] = '2'; table['S'] = '2'; table['X'] = '2'; table['Z'] = '2';
+    table['D'] = '3'; table['T'] = '3';
+    table['L'] = '4';
+    table['M'] = '5'; table['N'] = '5';
+    table['R'] = '6';
+}
+
 char getSoundexCode(char c) {
-    if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'H' || c == 'W' || c == 'Y') 
-        return '0';
-    if (c == 'B' || c == 'F' || c == 'P' || c == 'V')
-        return '1';
-    if (c == 'C' || c == 'G' || c == 'J' || c == 'K' || c == 'Q' || c == 'S' || c == 'X' || c == 'Z') 
-        return '2';
-    if (c == 'D' || c == 'T') 
-        return '3';
-    if (c == 'L') 
-        return '4';
-    if (c == 'M' || c == 'N')
-        return '5';
-    if (c == 'R')
-        return '6';
-    return '0';  
+    static char soundexTable[256];
+    initializeSoundexTable(soundexTable);
+    return soundexTable[(unsigned char)toupper(c)];
 }
 
 void generateSoundexPattern(int len,int sIndex, const char *name, char *soundex) {
