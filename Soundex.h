@@ -22,12 +22,16 @@ char getSoundexCode(char c) {
     return soundexTable[(unsigned char)toupper(c)];
 }
 
+void appendCodeToSoundex(char *code, char *soundex, int sIndex) {
+if (code != '0' && code != soundex[sIndex - 1]) {
+            soundex[sIndex++] = code;
+    }
+}
+
 void generateSoundexPattern(int len,int sIndex, const char *name, char *soundex) {
  for (int i = 1; i < len && sIndex < 4; i++) {
         char code = getSoundexCode(name[i]);
-        if (code != '0' && code != soundex[sIndex - 1]) {
-            soundex[sIndex++] = code;
-        }
+        appendCodeToSoundex(code,soundex,sIndex);
     }
 }
 
