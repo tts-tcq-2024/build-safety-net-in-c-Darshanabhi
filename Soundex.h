@@ -5,7 +5,8 @@
 #include <ctype.h>
 #include <string.h>
 
-static const char soundexTable[256] = {
+char getSoundexCode(char c) {
+    static const char soundexTable[256] = {
     ['A'] = '0', ['E'] = '0', ['I'] = '0', ['O'] = '0', ['U'] = '0',
     ['H'] = '0', ['W'] = '0', ['Y'] = '0',
     ['B'] = '1', ['F'] = '1', ['P'] = '1', ['V'] = '1',
@@ -14,9 +15,7 @@ static const char soundexTable[256] = {
     ['L'] = '4',
     ['M'] = '5', ['N'] = '5',
     ['R'] = '6'
-};
-
-char getSoundexCode(char c) {
+    };
     return soundexTable[(unsigned char)toupper(c)];
 }
 
