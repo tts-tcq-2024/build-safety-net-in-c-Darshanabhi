@@ -6,7 +6,7 @@
 #include <string.h>
 
 char getSoundexCode(char c) {
-    static const char soundexTable[256];
+    char soundexTable[256];
     soundexTable['A'] = '0'; soundexTable['E'] = '0'; soundexTable['I'] = '0'; soundexTable['O'] = '0'; soundexTable['U'] = '0';
     soundexTable['H'] = '0'; soundexTable['W'] = '0'; soundexTable['Y'] = '0';
     soundexTable['B'] = '1'; soundexTable['F'] = '1'; soundexTable['P'] = '1'; soundexTable['V'] = '1';
