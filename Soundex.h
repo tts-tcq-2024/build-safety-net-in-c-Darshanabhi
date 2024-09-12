@@ -5,7 +5,7 @@
 #include <ctype.h>
 #include <string.h>
 
-void initializeSoundexTable(char *table) (
+void initializeSoundexTable(char *table) {
     table['A'] = '0'; table['E'] = '0'; table['I'] = '0'; table['O'] = '0'; table['U'] = '0';
     table['H'] = '0'; table['W'] = '0'; table['Y'] = '0';
     table['B'] = '1'; table['F'] = '1'; table['P'] = '1'; table['V'] = '1';
