@@ -1,0 +1,13 @@
+﻿Spec document for Soundex Algorithm,,,
+,,,
+Test case ,Input,Output,Test Description
+Test case 1,AX,A2000,To verify if zeroes are padded when input is less than 6
+Test case 2,ROBERT,R6163,To verify if first character is retained and replaces the character with the digits
+Test case 3,JACKSON,J2225,"To verify when two adjacent letters encode to the same number, encode them instead as a single number"
+Test case 4,SASSOON,S2520,To verify when 2 letters are same then encoding them to single digit
+Test case 5,SMITH123,S5300,To Verify when input character has numbers pad with zeroes
+Test case 6, ,0,"To verify if input is blank space, the output becomes zeroes"
+Test case 7,65342,0,"To verify if input is numbers, the output becomes zeroes"
+Test case 8,356GHFK,G2120,To verify if input is digits at the beginning ignore it and retain first character and replace the characters with the digits
+Test case 9,HJ@LMN,H2450,To verify when special characters is given as input ignore it and replace the input with the digits
+Test case 10,M*BH8NDK,M1532,To verify when input has both special characters and numbers ignore it and replace the characters with digits
